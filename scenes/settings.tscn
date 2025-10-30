@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://1srdh360x86c"]
+
+[ext_resource type="Script" uid="uid://cqeocnbgj1rxy" path="res://scripts/settings.gd" id="1_5p8wc"]
+[ext_resource type="FontFile" uid="uid://bg7l8rhuysubn" path="res://assets/fonts/PixelOperator8.ttf" id="2_r6d6q"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5p8wc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Back_btn" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+text = "Back"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+text = "Change Volume"
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+text = "Mute Game"
+
+[node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resolution" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+selected = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[node name="Fullscreen" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen Mode"
+
+[node name="FullscreenMode" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back_btn" to="." method="_on_back_btn_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/FullscreenMode" to="." method="_on_fullscreen_mode_toggled"]
