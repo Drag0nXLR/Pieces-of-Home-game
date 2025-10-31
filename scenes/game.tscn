@@ -396,6 +396,7 @@ position = Vector2(1, 0)
 position = Vector2(-1, -10)
 zoom = Vector2(3.57, 3.57)
 limit_left = -737
+limit_right = 2732
 limit_bottom = 365
 position_smoothing_enabled = true
 
@@ -537,7 +538,7 @@ shape = SubResource("WorldBoundaryShape2D_kvuet")
 
 [node name="LevelChanger" type="Area2D" parent="."]
 z_index = 5
-position = Vector2(2555, -271)
+position = Vector2(2546, -269)
 collision_layer = 31
 collision_mask = 31
 script = ExtResource("14_trtic")
