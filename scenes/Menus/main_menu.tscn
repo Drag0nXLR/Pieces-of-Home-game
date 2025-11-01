@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=3 uid="uid://duu8cpmoxogfh"]
+
+[ext_resource type="Texture2D" uid="uid://dwu8n5jk107ty" path="res://assets/2 Background/Background.png" id="1_bqqt6"]
+[ext_resource type="FontFile" uid="uid://bg7l8rhuysubn" path="res://assets/fonts/PixelOperator8.ttf" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://ci0pc3es2hcv5" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_wu84c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekxnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ln24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtw2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa1go"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu84c"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wu84c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bqqt6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -35.0
+offset_right = 198.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.7852897, 0.95415777, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oa1go")
+text = "Start Adventure"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.7852897, 0.95415777, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oa1go")
+text = "Settings"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.7852897, 0.95415777, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wu84c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oa1go")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.0
+offset_top = -181.0
+offset_right = 408.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
+theme_override_fonts/font = ExtResource("3_wu84c")
+theme_override_font_sizes/font_size = 64
+text = "Pieces of home"
+autowrap_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_quit_pressed"]
