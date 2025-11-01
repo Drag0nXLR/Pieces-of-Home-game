@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Music="*res://scenes/music.tscn"
 SettingsManager="*res://scripts/settings_manager.gd"
+LevelTransition="*res://scenes/LevelTransition.tscn"
 
 [display]
 

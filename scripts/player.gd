@@ -49,11 +49,11 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("run"):
 			is_running = true
-			speed += 100
+			speed = 230
 		
 		elif Input.is_action_just_released("run"):
 			is_running = false
-			speed -= 100
+			speed = 130
 
 		#input direction 1 0 or -1
 		var direction := Input.get_axis("move_left", "move_right")

@@ -49,6 +49,7 @@ layout_mode = 2
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
 theme_override_fonts/font = ExtResource("4_es4n0")
 theme_override_font_sizes/font_size = 64
 text = "--SETTINGS--"

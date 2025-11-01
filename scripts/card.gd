@@ -4,5 +4,6 @@ extends Area2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _on_body_entered(body: Node2D):
-	game_manager.add_point()
-	animation_player.play("Pick Up")
+	if body.name == "Player":
+		game_manager.add_point()
+		animation_player.play("Pick Up")
