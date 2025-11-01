@@ -60,7 +60,7 @@ func _on_resolution_item_selected(index: int) -> void:
 	SettingsManager.save_settings()
 
 func _on_back_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")
 
 func _on_fullscreen_mode_toggled(toggled_on: bool) -> void:
 	SettingsManager.settings["fullscreen"] = toggled_on
