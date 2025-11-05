@@ -2,6 +2,10 @@ extends Control
 
 @onready var settings: Control = $PauseSettings
 @onready var pause_menu: PanelContainer = $PanelContainer
+@onready var resume_btn: Button = $PanelContainer/VBoxContainer/Resume
+@onready var settings_btn: Button = $PanelContainer/VBoxContainer/Settings
+@onready var quit_btn: Button = $PanelContainer/VBoxContainer/Quit
+@onready var color_rect: ColorRect = $ColorRect
 
 @onready var volume_slider: HSlider = $PauseSettings/VBoxContainer/Volume
 @onready var mute: CheckBox = $PauseSettings/VBoxContainer/Mute
@@ -19,11 +23,16 @@ func load_ui_from_settings():
 	AudioServer.set_bus_mute(0, s["muted"])
 
 func resume():
+	resume_btn.release_focus()
+	quit_btn.release_focus()
+	settings_btn.release_focus()
+	color_rect.hide()
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("pause")
 
 func pause():
 	get_tree().paused = true
+	color_rect.show()
 	$AnimationPlayer.play("pause")
 
 func esc():
@@ -41,6 +50,11 @@ func _on_settings_pressed() -> void:
 	pause_menu.hide()
 
 func _on_quit_pressed() -> void:
+	$AnimationPlayer.play_backwards("pause")
+	resume_btn.release_focus()
+	quit_btn.release_focus()
+	settings_btn.release_focus()
+	color_rect.hide()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")
 
@@ -55,7 +69,9 @@ func _on_volume_value_changed(value: float) -> void:
 	SettingsManager.save_settings()
 
 func _on_mute_toggled(toggled_on: bool) -> void:
+	SettingsManager.settings["muted"] = toggled_on
 	AudioServer.set_bus_mute(0, toggled_on)
+	SettingsManager.save_settings()
 
-func _process(delta: float):
+func _process(_delta: float):
 	esc()

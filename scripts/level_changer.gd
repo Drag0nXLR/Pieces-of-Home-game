@@ -5,4 +5,4 @@ extends Area2D
 func _on_body_entered(body: Node2D):
 	if body.name == "Player":
 		print("debug")
-		level_transition.call_deferred("start_transition", "res://scenes/Transitions_and_Cutscenes/cutscene.tscn")
+		level_transition.call_deferred("start_transition")

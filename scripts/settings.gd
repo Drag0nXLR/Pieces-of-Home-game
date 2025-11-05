@@ -38,7 +38,9 @@ func _on_volume_value_changed(value: float) -> void:
 	SettingsManager.save_settings()
 
 func _on_mute_toggled(toggled_on: bool) -> void:
+	SettingsManager.settings["muted"] = toggled_on
 	AudioServer.set_bus_mute(0, toggled_on)
+	SettingsManager.save_settings()
 
 func set_window_size_centered_on_current_screen(new_size: Vector2i) -> void:
 	var screen_id = DisplayServer.window_get_current_screen()
