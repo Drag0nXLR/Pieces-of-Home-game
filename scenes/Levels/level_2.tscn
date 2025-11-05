@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdpeyocy7u4pu"]
+[gd_scene load_steps=23 format=3 uid="uid://cdpeyocy7u4pu"]
 
 [ext_resource type="Texture2D" uid="uid://dv0xfcgfx6qs5" path="res://assets/2 Background/Day/1.png" id="1_y0kc7"]
 [ext_resource type="Texture2D" uid="uid://bycei0xq1a57f" path="res://assets/2 Background/Day/2.png" id="2_ne2mo"]
@@ -13,6 +13,10 @@
 [ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="11_172wr"]
 [ext_resource type="PackedScene" uid="uid://croejyblabof3" path="res://scenes/Others/Killzone.tscn" id="12_172wr"]
 [ext_resource type="FontFile" uid="uid://bg7l8rhuysubn" path="res://assets/fonts/PixelOperator8.ttf" id="13_g2hoc"]
+[ext_resource type="PackedScene" uid="uid://d1vv8utxt3l6y" path="res://scenes/Menus/pause.tscn" id="14_2ewt3"]
+[ext_resource type="PackedScene" uid="uid://dhypf6ihnekfo" path="res://scenes/Sprites/slime.tscn" id="15_e4h20"]
+[ext_resource type="PackedScene" uid="uid://boxasfqrb055a" path="res://scenes/Sprites/purple_portal.tscn" id="16_2hpwu"]
+[ext_resource type="Script" uid="uid://cbohobn1kfy1y" path="res://scripts/level_changer.gd" id="17_0lf7e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fldb1"]
 texture = ExtResource("6_172wr")
@@ -149,9 +153,42 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fldb1")
 sources/1 = SubResource("TileSetAtlasSource_guvtl")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wxjxf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ewt3"]
+size = Vector2(233.28017, 11.199799)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_410d2"]
+size = Vector2(20, 47.542847)
 
 [node name="Level2" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score_label" type="Label" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = -1
+anchor_left = 0.92109376
+anchor_right = 1.0
+anchor_bottom = 0.0027777778
+offset_left = -41.0
+offset_right = -1.0
+offset_bottom = 130.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("11_172wr")
+text = "You got 0 parts of broken ship"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource("14_2ewt3")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_hey2k")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -231,51 +268,23 @@ position = Vector2(1171, -136)
 [node name="Card5" parent="." instance=ExtResource("9_6cvei")]
 position = Vector2(1552, 22)
 
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("10_hey2k")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Score_label" type="Label" parent="CanvasLayer"]
-z_index = 5
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 130.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("11_172wr")
-text = "You got 0 parts of broken ship"
-horizontal_alignment = 2
-vertical_alignment = 1
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Killzone" parent="." instance=ExtResource("12_172wr")]
-position = Vector2(1457, 593)
+position = Vector2(1457, 762.695)
 scale = Vector2(26.68872, -1.7906965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(104.50106, 18.175323)
+position = Vector2(-6.93388, 13.7752075)
 scale = Vector2(1.044963, 1)
-shape = SubResource("WorldBoundaryShape2D_wxjxf")
+shape = SubResource("RectangleShape2D_2ewt3")
 
 [node name="Card6" parent="." instance=ExtResource("9_6cvei")]
 position = Vector2(3879, -346)
 
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 2649.0
-offset_top = -959.0
-offset_right = 3154.0
-offset_bottom = -921.0
-text = "Perenos na 3. level(teleporter)(ydalut potom ze soobshcheniye)"
-
 [node name="Label" type="Label" parent="."]
-offset_left = 2816.0
-offset_top = -1051.0
-offset_right = 3077.0
-offset_bottom = -1000.0
+offset_left = 2980.0
+offset_top = -1065.0
+offset_right = 3241.0
+offset_bottom = -1014.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_g2hoc")
 theme_override_font_sizes/font_size = 24
@@ -283,46 +292,67 @@ text = "DONT ENTER....
 Or do."
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 1039.0
-offset_top = -253.0
-offset_right = 1265.0
-offset_bottom = -230.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 1113.0
+offset_top = -269.0
+offset_right = 1339.0
+offset_bottom = -246.0
+theme_override_colors/font_color = Color(1, 0.83137256, 0, 1)
 theme_override_fonts/font = ExtResource("13_g2hoc")
 text = "You won’t make it."
 
 [node name="Label3" type="Label" parent="."]
-offset_left = 1647.0
-offset_top = -255.0
-offset_right = 1941.0
-offset_bottom = -232.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 1784.0
+offset_top = -246.0
+offset_right = 2078.0
+offset_bottom = -223.0
+theme_override_colors/font_color = Color(1, 0.83137256, 0, 1)
 theme_override_fonts/font = ExtResource("13_g2hoc")
 text = "You’re not good enough."
 
 [node name="Label4" type="Label" parent="."]
-offset_left = 2336.0
-offset_top = -231.0
-offset_right = 2508.0
-offset_bottom = -208.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 2696.0
+offset_top = -296.0
+offset_right = 2868.0
+offset_bottom = -273.0
+theme_override_colors/font_color = Color(1, 0.83137256, 0, 1)
 theme_override_fonts/font = ExtResource("13_g2hoc")
 text = "Why even try?"
 
 [node name="Label5" type="Label" parent="."]
-offset_left = 1269.0
-offset_top = -226.0
-offset_right = 1647.0
-offset_bottom = -203.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 1398.0
+offset_top = -296.0
+offset_right = 1776.0
+offset_bottom = -273.0
+theme_override_colors/font_color = Color(1, 0.83137256, 0, 1)
 theme_override_fonts/font = ExtResource("13_g2hoc")
 text = "Someone better already did it."
 
 [node name="Label6" type="Label" parent="."]
-offset_left = 2007.0
-offset_top = -263.0
-offset_right = 2305.0
-offset_bottom = -240.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 2206.0
+offset_top = -296.0
+offset_right = 2504.0
+offset_bottom = -273.0
+theme_override_colors/font_color = Color(1, 0.83137256, 0, 1)
 theme_override_fonts/font = ExtResource("13_g2hoc")
 text = "You’ll quit, like always."
+
+[node name="Slime" parent="." instance=ExtResource("15_e4h20")]
+position = Vector2(1166, 32)
+
+[node name="PurplePortal" parent="." instance=ExtResource("16_2hpwu")]
+z_index = 6
+position = Vector2(2768.0002, -1075.0001)
+scale = Vector2(1.640625, 1.640625)
+
+[node name="LevelChanger" type="Area2D" parent="PurplePortal"]
+z_index = 5
+collision_layer = 31
+collision_mask = 31
+script = ExtResource("17_0lf7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PurplePortal/LevelChanger"]
+position = Vector2(-0.00012207031, 6.095337)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_410d2")
+
+[connection signal="body_entered" from="PurplePortal/LevelChanger" to="PurplePortal/LevelChanger" method="_on_body_entered"]

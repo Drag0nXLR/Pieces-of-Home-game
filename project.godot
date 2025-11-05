@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 Music="*res://scenes/Others/music.tscn"
 SettingsManager="*res://scripts/settings_manager.gd"
 LevelTransition="*res://scenes/Transitions_and_Cutscenes/LevelTransition.tscn"
+SceneManager="*res://scripts/SceneManager.gd"
+Functions="*res://scripts/Functions.gd"
 
 [display]
 
