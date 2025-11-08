@@ -4,10 +4,20 @@ extends Control
 @onready var volume_slider: HSlider = $MarginContainer/VBoxContainer/Volume
 @onready var resolution_select: OptionButton = $MarginContainer/VBoxContainer/Resolution
 @onready var mute: CheckBox = $MarginContainer/VBoxContainer/Mute
+@onready var language_button: OptionButton = $MarginContainer/VBoxContainer/Language
 
+
+func _on_language_item_selected(index):
+	var selected_lang = language_button.get_item_text(index)
+	LanguageManager.set_language(selected_lang)
 func _ready() -> void:
 	update_ui_from_settings()
-
+	# Встановлюємо OptionButton на поточну мову
+	var current_lang = LanguageManager.current_language
+	for i in range(language_button.get_item_count()):
+		if language_button.get_item_text(i) == current_lang:
+			language_button.select(i)
+			break
 func update_ui_from_settings() -> void:
 	var s = SettingsManager.settings
 
@@ -38,7 +48,9 @@ func _on_volume_value_changed(value: float) -> void:
 	SettingsManager.save_settings()
 
 func _on_mute_toggled(toggled_on: bool) -> void:
+	SettingsManager.settings["muted"] = toggled_on
 	AudioServer.set_bus_mute(0, toggled_on)
+	SettingsManager.save_settings()
 
 func set_window_size_centered_on_current_screen(new_size: Vector2i) -> void:
 	var screen_id = DisplayServer.window_get_current_screen()
@@ -60,7 +72,7 @@ func _on_resolution_item_selected(index: int) -> void:
 	SettingsManager.save_settings()
 
 func _on_back_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")
 
 func _on_fullscreen_mode_toggled(toggled_on: bool) -> void:
 	SettingsManager.settings["fullscreen"] = toggled_on

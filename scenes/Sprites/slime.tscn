@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dhypf6ihnekfo"]
 
-[ext_resource type="Texture2D" uid="uid://bqb3krptk6r4k" path="res://assets/slime_green.png" id="1_371uh"]
+[ext_resource type="Texture2D" uid="uid://bqb3krptk6r4k" path="res://assets/4 Animated objects/slime_green.png" id="1_371uh"]
 [ext_resource type="Script" uid="uid://dsdc4ce6dc1jv" path="res://scripts/slime.gd" id="1_n6pvg"]
-[ext_resource type="PackedScene" uid="uid://croejyblabof3" path="res://scenes/Killzone.tscn" id="2_p2gj0"]
+[ext_resource type="PackedScene" uid="uid://croejyblabof3" path="res://scenes/Others/Killzone.tscn" id="2_p2gj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
 atlas = ExtResource("1_371uh")
