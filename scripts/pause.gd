@@ -12,7 +12,7 @@ extends Control
 
 func _ready() -> void:
 	load_ui_from_settings()
-
+	LanguageManager._update_current_scene_labels()
 func load_ui_from_settings():
 	var s = SettingsManager.settings
 	
@@ -50,6 +50,7 @@ func _on_settings_pressed() -> void:
 	pause_menu.hide()
 
 func _on_quit_pressed() -> void:
+	SceneManager.current_level_index-=1
 	$AnimationPlayer.play_backwards("pause")
 	resume_btn.release_focus()
 	quit_btn.release_focus()

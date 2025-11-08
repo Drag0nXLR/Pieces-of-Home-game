@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct4dr5cnnl3hh"]
+
+[ext_resource type="PackedScene" uid="uid://8jempi76lxdq" path="res://scenes/Levels/game.tscn" id="1_25ekb"]
+[ext_resource type="PackedScene" uid="uid://cdpeyocy7u4pu" path="res://scenes/Levels/level_2.tscn" id="2_rginb"]
+[ext_resource type="PackedScene" uid="uid://kttwgno75c6q" path="res://scenes/Levels/level_3.tscn" id="3_b3q6m"]
+[ext_resource type="PackedScene" uid="uid://bv3addumx2tbx" path="res://scenes/Menus/loading_screen.tscn" id="4_l5dfi"]
+[ext_resource type="PackedScene" uid="uid://duu8cpmoxogfh" path="res://scenes/Menus/main_menu.tscn" id="5_w3q7f"]
+[ext_resource type="PackedScene" uid="uid://d1vv8utxt3l6y" path="res://scenes/Menus/pause.tscn" id="6_mn3x4"]
+[ext_resource type="PackedScene" uid="uid://1srdh360x86c" path="res://scenes/Menus/settings.tscn" id="7_q7ba7"]
+
+[node name="Language" type="Node2D"]
+
+[node name="Game" parent="." instance=ExtResource("1_25ekb")]
+
+[node name="Level2" parent="." instance=ExtResource("2_rginb")]
+
+[node name="Level3" parent="." instance=ExtResource("3_b3q6m")]
+
+[node name="LoadingScreen" parent="." instance=ExtResource("4_l5dfi")]
+
+[node name="MainMenu" parent="." instance=ExtResource("5_w3q7f")]
+
+[node name="pause" parent="." instance=ExtResource("6_mn3x4")]
+
+[node name="Settings" parent="." instance=ExtResource("7_q7ba7")]

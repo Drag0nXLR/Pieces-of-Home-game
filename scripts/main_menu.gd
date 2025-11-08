@@ -1,7 +1,8 @@
 extends Control
 
 func _on_start_pressed() -> void:
-	Functions.load_screen_to_scene("res://scenes/Levels/game.tscn", {"test": "test"})
+	LevelTransition.start_transition()
+	LanguageManager._update_current_scene_labels()
 
 func _on_settings_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Menus/settings.tscn")
