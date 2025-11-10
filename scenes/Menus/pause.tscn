@@ -143,6 +143,7 @@ grow_vertical = 2
 script = ExtResource("1_f1d2v")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 5
 material = SubResource("ShaderMaterial_45yld")
 layout_mode = 1
 anchors_preset = 15

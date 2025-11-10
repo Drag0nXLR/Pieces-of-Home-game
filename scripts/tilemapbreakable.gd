@@ -6,7 +6,7 @@ func _process(delta):
 	if player_path == null:
 		return
 
-	var player = get_node(player_path)
+	var player = get_node_or_null(player_path)
 	var player_pos = player.global_position
 
 	# Знаходимо клітинку, де стоїть гравець

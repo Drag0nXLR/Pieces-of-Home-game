@@ -124,7 +124,7 @@ Or do.": {
 	"English":"DONT ENTER....
 Or do.",
 	"Українська":"НЕ ВХОДЬ.... 
-	Або зроби.",
+	Або входи.",
 	"Deutsch":"NICHT EINTRETEN.... Oder tu es."
 },
 	"Wait!,isnt this just the same world?": {
