@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://8jempi76lxdq"]
 
 [ext_resource type="Script" uid="uid://d25xtfqbtwnbt" path="res://scripts/game_manager.gd" id="1_0j242"]
-[ext_resource type="Script" uid="uid://d0q10pr0vhcv8" path="res://scenes/Levels/main.gd" id="1_l25cu"]
+[ext_resource type="Script" uid="uid://d0q10pr0vhcv8" path="res://scripts/Levels/main.gd" id="1_l25cu"]
 [ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_snocx"]
 [ext_resource type="PackedScene" uid="uid://d3syoc4s5cm5h" path="res://scenes/Sprites/main_hero.tscn" id="3_l25cu"]
 [ext_resource type="PackedScene" uid="uid://d1vv8utxt3l6y" path="res://scenes/Menus/pause.tscn" id="3_snocx"]
