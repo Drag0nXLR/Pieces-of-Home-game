@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cqeocnbgj1rxy" path="res://scripts/settings.gd" id="1_5p8wc"]
 [ext_resource type="Texture2D" uid="uid://ba82a6cpu8htf" path="res://assets/2 Background/Background1.png" id="2_f4mfi"]
 [ext_resource type="FontFile" uid="uid://bg7l8rhuysubn" path="res://assets/fonts/PixelOperator8.ttf" id="2_r6d6q"]
-[ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_es4n0"]
+[ext_resource type="FontFile" uid="uid://skbr44u113j7" path="res://assets/Font/Tiny5-Regular.ttf" id="3_yrdxn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gis3k"]
 texture = ExtResource("2_f4mfi")
@@ -50,7 +50,7 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_fonts/font = ExtResource("4_es4n0")
+theme_override_fonts/font = ExtResource("3_yrdxn")
 theme_override_font_sizes/font_size = 64
 text = "--SETTINGS--"
 horizontal_alignment = 1
@@ -58,7 +58,8 @@ horizontal_alignment = 1
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_fonts/font = ExtResource("4_es4n0")
+theme_override_fonts/font = ExtResource("3_yrdxn")
+theme_override_font_sizes/font_size = 32
 text = "Change Volume"
 
 [node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
@@ -70,7 +71,8 @@ value = 1.0
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_fonts/font = ExtResource("4_es4n0")
+theme_override_fonts/font = ExtResource("3_yrdxn")
+theme_override_font_sizes/font_size = 32
 text = "Mute Game"
 
 [node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
@@ -91,7 +93,8 @@ popup/item_2/id = 2
 [node name="Fullscreen" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_fonts/font = ExtResource("4_es4n0")
+theme_override_fonts/font = ExtResource("3_yrdxn")
+theme_override_font_sizes/font_size = 32
 text = "Fullscreen Mode"
 
 [node name="FullscreenMode" type="CheckBox" parent="MarginContainer/VBoxContainer"]
@@ -100,7 +103,8 @@ layout_mode = 2
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_fonts/font = ExtResource("4_es4n0")
+theme_override_fonts/font = ExtResource("3_yrdxn")
+theme_override_font_sizes/font_size = 32
 text = "Language"
 
 [node name="Language" type="OptionButton" parent="MarginContainer/VBoxContainer"]
@@ -114,6 +118,36 @@ popup/item_1/text = "Українська"
 popup/item_1/id = 1
 popup/item_2/text = "Deutsch"
 popup/item_2/id = 2
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
+theme_override_fonts/font = ExtResource("3_yrdxn")
+theme_override_font_sizes/font_size = 64
+text = "--FNF SETTINGS--"
+horizontal_alignment = 1
+
+[node name="Keybinds" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+selected = 2
+item_count = 3
+popup/item_0/text = "QWER"
+popup/item_0/id = 0
+popup/item_1/text = "ASKL"
+popup/item_1/id = 1
+popup/item_2/text = "DFJK"
+popup/item_2/id = 2
+
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
+theme_override_fonts/font = ExtResource("3_yrdxn")
+theme_override_font_sizes/font_size = 32
+text = "Ghosttapping"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="Back_btn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
