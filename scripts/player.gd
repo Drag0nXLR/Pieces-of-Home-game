@@ -16,6 +16,15 @@ var jumps_left: int
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 
+func toggle_invis():
+	if not GlobalVars.invis:
+		animated_sprite.modulate = Color(1.0, 1.0, 1.0, 0.5)
+		GlobalVars.invis = true
+	else:
+		animated_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		GlobalVars.invis = false
+	print(GlobalVars.invis)
+
 func walk_anim():
 	animated_sprite.play("walk")
 
@@ -23,7 +32,6 @@ func run_anim():
 	animated_sprite.play("run")
 
 func die():
-	is_dead = true
 	animated_sprite.play("death")
 
 func _ready():
@@ -38,6 +46,9 @@ func _physics_process(delta: float) -> void:
 			jumps_left = max_jumps
 			is_double_jumping = false
 		# Handle jump.
+		if Input.is_action_just_pressed("toggle invisible"):
+			toggle_invis()
+
 		if Input.is_action_just_pressed("jump") and jumps_left > 0:
 			velocity.y = JUMP_VELOCITY
 			jumps_left -= 1

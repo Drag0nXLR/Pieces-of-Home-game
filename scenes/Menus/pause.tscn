@@ -170,14 +170,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Resume"
 
 [node name="Settings" type="Button" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Settings"
 
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Main Menu"
 
@@ -188,6 +191,7 @@ libraries = {
 
 [node name="PauseSettings" type="Control" parent="."]
 visible = false
+z_index = 6
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

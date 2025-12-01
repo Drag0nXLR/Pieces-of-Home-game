@@ -26,13 +26,20 @@ func resume():
 	resume_btn.release_focus()
 	quit_btn.release_focus()
 	settings_btn.release_focus()
+	
 	color_rect.hide()
+	resume_btn.hide()
+	quit_btn.hide()
+	settings_btn.hide()
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("pause")
 
 func pause():
 	get_tree().paused = true
 	color_rect.show()
+	resume_btn.show()
+	quit_btn.show()
+	settings_btn.show()
 	$AnimationPlayer.play("pause")
 
 func esc():

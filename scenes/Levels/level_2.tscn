@@ -176,6 +176,7 @@ offset_right = -1.0
 offset_bottom = 130.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("11_172wr")
+theme_override_font_sizes/font_size = 32
 text = "You got 0 parts of broken ship"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -280,7 +281,7 @@ position = Vector2(1457, 762.695)
 scale = Vector2(26.68872, -1.7906965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(-6.93388, 13.7752075)
+position = Vector2(-6.9317665, -1704.5349)
 scale = Vector2(1.044963, 1)
 shape = SubResource("RectangleShape2D_2ewt3")
 

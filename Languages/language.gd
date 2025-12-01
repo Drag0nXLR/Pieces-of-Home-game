@@ -5,6 +5,7 @@ extends Node
 var ukrainian_font : Font = preload("res://assets/Font/Tiny5-Regular.ttf")
 var default_label_font : Font = null
 var default_button_font : Font = null
+var default_cursed_label_font = preload("res://assets/Font/Unown.ttf")
 var current_language = "English"
 var last_scene: Node = null
 var language_dict = {

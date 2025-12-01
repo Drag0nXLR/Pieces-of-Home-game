@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_snocx"]
 [ext_resource type="PackedScene" uid="uid://d3syoc4s5cm5h" path="res://scenes/Sprites/main_hero.tscn" id="3_l25cu"]
 [ext_resource type="PackedScene" uid="uid://d1vv8utxt3l6y" path="res://scenes/Menus/pause.tscn" id="3_snocx"]
-[ext_resource type="PackedScene" uid="uid://croejyblabof3" path="res://scenes/Others/Killzone.tscn" id="4_j167y"]
 [ext_resource type="PackedScene" uid="uid://c74r2spji2f02" path="res://scenes/Sprites/platform.tscn" id="5_kgokg"]
 [ext_resource type="Texture2D" uid="uid://dohgg4kxh837y" path="res://assets/3 Objects/world_tileset.png" id="6_gma0m"]
 [ext_resource type="Texture2D" uid="uid://b327kyciduk8d" path="res://assets/1 Tiles/BackTileset.png" id="7_ryi0r"]
@@ -17,8 +16,7 @@
 [ext_resource type="FontFile" uid="uid://skbr44u113j7" path="res://assets/Font/Tiny5-Regular.ttf" id="13_j167y"]
 [ext_resource type="PackedScene" uid="uid://dhypf6ihnekfo" path="res://scenes/Sprites/slime.tscn" id="13_jq5g6"]
 [ext_resource type="Script" uid="uid://cbohobn1kfy1y" path="res://scripts/level_changer.gd" id="14_lqda6"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+[ext_resource type="PackedScene" uid="uid://croejyblabof3" path="res://scenes/Others/Killzone.tscn" id="17_j167y"]
 
 [sub_resource type="Animation" id="Animation_lbhrr"]
 length = 0.001
@@ -367,6 +365,8 @@ normal = Vector2(1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir15t"]
 size = Vector2(20, 257.5)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kgokg"]
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l25cu")
 
@@ -386,6 +386,7 @@ offset_left = -40.0
 offset_bottom = 130.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_snocx")
+theme_override_font_sizes/font_size = 32
 text = "You got 0 parts of broken ship"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -406,13 +407,6 @@ limit_left = -737
 limit_right = 2732
 limit_bottom = 365
 position_smoothing_enabled = true
-
-[node name="Killzone" parent="." instance=ExtResource("4_j167y")]
-position = Vector2(0, -10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 659)
-shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -564,5 +558,11 @@ script = ExtResource("14_lqda6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChanger"]
 position = Vector2(5, -129)
 shape = SubResource("RectangleShape2D_ir15t")
+
+[node name="Killzone" parent="." instance=ExtResource("17_j167y")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 1564)
+shape = SubResource("WorldBoundaryShape2D_kgokg")
 
 [connection signal="body_entered" from="LevelChanger" to="LevelChanger" method="_on_body_entered"]
