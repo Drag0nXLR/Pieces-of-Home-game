@@ -204,7 +204,7 @@ script = ExtResource("4_pvfsd")
 position = Vector2(1164, 30)
 
 [node name="Killzone" parent="." instance=ExtResource("7_wqrpq")]
-position = Vector2(1457, 593)
+position = Vector2(1457, 1587)
 scale = Vector2(26.68872, -1.7906965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]

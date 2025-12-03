@@ -35,6 +35,7 @@ func die():
 	animated_sprite.play("death")
 
 func _ready():
+	print(SceneManager.current_level_index)
 	jumps_left = max_jumps
 
 func _physics_process(delta: float) -> void:

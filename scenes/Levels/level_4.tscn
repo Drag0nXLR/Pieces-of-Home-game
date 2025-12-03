@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://bpv2gjlcg4h6r"]
+[gd_scene load_steps=19 format=4 uid="uid://bpv2gjlcg4h6r"]
 
 [ext_resource type="PackedScene" uid="uid://d1vv8utxt3l6y" path="res://scenes/Menus/pause.tscn" id="1_1b8uj"]
+[ext_resource type="Script" uid="uid://ci0krb62q4vic" path="res://scripts/Levels/level_4.gd" id="1_cmqrq"]
 [ext_resource type="PackedScene" uid="uid://d3syoc4s5cm5h" path="res://scenes/Sprites/main_hero.tscn" id="1_q5bhw"]
 [ext_resource type="Texture2D" uid="uid://b327kyciduk8d" path="res://assets/1 Tiles/BackTileset.png" id="2_q5bhw"]
+[ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_q42d0"]
 [ext_resource type="Texture2D" uid="uid://b5fjxus37410c" path="res://assets/1 Tiles/Tileset.png" id="3_ma2bb"]
+[ext_resource type="PackedScene" uid="uid://dn5fj7bf5ekgn" path="res://scenes/Others/trigger.tscn" id="5_m1vf6"]
+[ext_resource type="Script" uid="uid://crqwpnlf4ap5h" path="res://scripts/play_up.gd" id="6_cmqrq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1vf6"]
 texture = ExtResource("2_q5bhw")
@@ -223,7 +227,68 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_1b8uj")
 
+[sub_resource type="Animation" id="Animation_ma2bb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TileMapLab/TileMapAnimatable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q5bhw"]
+resource_name = "up"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TileMapLab/TileMapAnimatable:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -105)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1vf6"]
+_data = {
+&"RESET": SubResource("Animation_ma2bb"),
+&"up": SubResource("Animation_q5bhw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1vf6"]
+
 [node name="Level 4" type="Node2D"]
+script = ExtResource("1_cmqrq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score_label" type="Label" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = -1
+anchor_left = 0.92109376
+anchor_right = 1.0
+anchor_bottom = 0.0027777778
+offset_left = -40.0
+offset_bottom = 130.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_q42d0")
+theme_override_font_sizes/font_size = 32
+text = "You got 0 parts of broken ship"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="pause" parent="CanvasLayer" instance=ExtResource("1_1b8uj")]
 
 [node name="Player" parent="." instance=ExtResource("1_q5bhw")]
 position = Vector2(53, 698)
@@ -249,3 +314,19 @@ tile_set = SubResource("TileSet_r00u7")
 tile_set = SubResource("TileSet_q5bhw")
 format = 2
 layer_0/tile_data = PackedInt32Array(983051, 393217, 3, 1048587, 1, 2, 1114123, 196609, 1, 1179659, 196609, 1, 1245195, 196609, 1, 1310731, 1, 2, 1376267, 196609, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_m1vf6")
+}
+
+[node name="TriggerUp" type="Node" parent="."]
+script = ExtResource("6_cmqrq")
+
+[node name="Trigger" parent="TriggerUp" instance=ExtResource("5_m1vf6")]
+position = Vector2(304, 688)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerUp/Trigger"]
+shape = SubResource("RectangleShape2D_m1vf6")
+
+[connection signal="body_entered" from="TriggerUp/Trigger" to="TriggerUp" method="_on_trigger_body_entered"]

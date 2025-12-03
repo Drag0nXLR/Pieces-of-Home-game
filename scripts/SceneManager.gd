@@ -6,6 +6,7 @@ const LEVELS = [
 	preload("res://scenes/Transitions_and_Cutscenes/cutscene.tscn"),
 	preload("res://scenes/Levels/level_2.tscn"),
 	preload("res://scenes/Levels/level_3.tscn"),
+	preload("res://scenes/Levels/level_4.tscn"),
 	preload("res://scenes/Menus/main_menu.tscn")
 ]
 

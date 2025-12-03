@@ -63,6 +63,9 @@ func _on_quit_pressed() -> void:
 	quit_btn.release_focus()
 	settings_btn.release_focus()
 	color_rect.hide()
+	resume_btn.hide()
+	quit_btn.hide()
+	settings_btn.hide()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")
 
