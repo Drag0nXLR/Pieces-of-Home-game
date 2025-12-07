@@ -320,13 +320,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_m1vf6")
 }
 
-[node name="TriggerUp" type="Node" parent="."]
+[node name="Trigger" parent="." instance=ExtResource("5_m1vf6")]
+position = Vector2(304, 688)
 script = ExtResource("6_cmqrq")
 
-[node name="Trigger" parent="TriggerUp" instance=ExtResource("5_m1vf6")]
-position = Vector2(304, 688)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerUp/Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
 shape = SubResource("RectangleShape2D_m1vf6")
-
-[connection signal="body_entered" from="TriggerUp/Trigger" to="TriggerUp" method="_on_trigger_body_entered"]

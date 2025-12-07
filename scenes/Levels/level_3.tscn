@@ -204,11 +204,10 @@ script = ExtResource("4_pvfsd")
 position = Vector2(1164, 30)
 
 [node name="Killzone" parent="." instance=ExtResource("7_wqrpq")]
-position = Vector2(1457, 1587)
+position = Vector2(1457, 1000)
 scale = Vector2(26.68872, -1.7906965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(30.039589, 10.7890625)
 scale = Vector2(1.044963, 1)
 shape = SubResource("RectangleShape2D_r15cd")
 

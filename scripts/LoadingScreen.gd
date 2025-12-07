@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 
 # Ця функція впорається із затримкою та переходом
 func _transition() -> void:
-	#await get_tree().create_timer(20).timeout
+	#await get_tree().create_timer(999).timeout
 	var new_scene: PackedScene = ResourceLoader.load_threaded_get(next_scene_path)
 	var new_node = new_scene.instantiate()
 	new_node.params = params

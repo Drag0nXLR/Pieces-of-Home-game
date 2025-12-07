@@ -14,7 +14,7 @@ func _on_body_entered(body):
 		# body.get_node("CollisionShape2D").queue_free()
 		pl.position=GlobalVars.spawnpoint
 		#pl.is_dead=false
-	if body.position.y >= 1587:
+	if body.position.y >= 1000:
 		pl=body
 		print("You died!")
 		Engine.time_scale = 0.7

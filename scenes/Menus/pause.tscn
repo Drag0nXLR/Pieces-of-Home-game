@@ -193,9 +193,11 @@ libraries = {
 visible = false
 z_index = 6
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -213,7 +215,16 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PauseSettings/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PauseSettings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseSettings/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_45yld")
 theme_override_font_sizes/font_size = 64
@@ -221,17 +232,21 @@ text = "==VOLUME=="
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Volume" type="HSlider" parent="PauseSettings/VBoxContainer"]
+[node name="Volume" type="HSlider" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Mute" type="CheckBox" parent="PauseSettings/VBoxContainer"]
+[node name="Mute" type="CheckBox" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_45yld")
 theme_override_font_sizes/font_size = 16
 text = "Mute"
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseSettings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Back" type="Button" parent="PauseSettings/VBoxContainer"]
 layout_mode = 2
@@ -240,6 +255,6 @@ text = "Back"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="value_changed" from="PauseSettings/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
-[connection signal="toggled" from="PauseSettings/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="value_changed" from="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
 [connection signal="pressed" from="PauseSettings/VBoxContainer/Back" to="." method="_on_back_pressed"]

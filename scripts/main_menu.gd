@@ -3,6 +3,10 @@ extends Control
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 @onready var label: Label = $Label
 
+func _ready():
+	$VBoxContainer/Start.grab_focus()
+
+
 func _on_start_pressed() -> void:
 	Functions.load_screen_to_scene(SceneManager.go_to_next_level(), {"Load": "scene"})
 	texture_rect.hide()

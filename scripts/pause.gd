@@ -6,13 +6,15 @@ extends Control
 @onready var settings_btn: Button = $PanelContainer/VBoxContainer/Settings
 @onready var quit_btn: Button = $PanelContainer/VBoxContainer/Quit
 @onready var color_rect: ColorRect = $ColorRect
+@onready var settings_menu: Control = $PauseSettings
 
-@onready var volume_slider: HSlider = $PauseSettings/VBoxContainer/Volume
-@onready var mute: CheckBox = $PauseSettings/VBoxContainer/Mute
+@onready var volume_slider: HSlider = $PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Volume
+@onready var mute: CheckBox = $PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Mute
 
 func _ready() -> void:
 	load_ui_from_settings()
 	LanguageManager._update_current_scene_labels()
+
 func load_ui_from_settings():
 	var s = SettingsManager.settings
 	

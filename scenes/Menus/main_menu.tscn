@@ -50,13 +50,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 35
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Quit")
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.7852897, 0.95415777, 1)
 theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("1_l6cm7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
@@ -65,13 +68,15 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_rtw2f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oa1go")
 text = "Start Adventure"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.7852897, 0.95415777, 1)
 theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("1_l6cm7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_bqqt6")
@@ -80,13 +85,16 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_rtw2f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oa1go")
 text = "Settings"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../Start")
 theme_override_colors/font_color = Color(1, 0.972549, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0.972549, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.7852897, 0.95415777, 1)
 theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("1_l6cm7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wu84c")
@@ -117,6 +125,6 @@ theme_override_font_sizes/font_size = 119
 text = "Pieces of home"
 autowrap_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

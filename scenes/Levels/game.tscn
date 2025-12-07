@@ -562,7 +562,7 @@ shape = SubResource("RectangleShape2D_ir15t")
 [node name="Killzone" parent="." instance=ExtResource("17_j167y")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 1564)
+position = Vector2(0, 1000)
 shape = SubResource("WorldBoundaryShape2D_kgokg")
 
 [connection signal="body_entered" from="LevelChanger" to="LevelChanger" method="_on_body_entered"]
