@@ -14,11 +14,18 @@ var input_actions = {
 	"move_right": "Move right",
 	"run": "Run",
 	"attack": "Attack",
-	"toggle invisible": "Toggle invisible"
+	"toggle_invisible": "Toggle invisible"
 }
 
 func _ready():
+	_load_keybindings_from_settings()
 	_create_action_list()
+
+func _load_keybindings_from_settings():
+	var keybindings = SettingsManager.load_keybindings()
+	for action in keybindings.keys():
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, keybindings[action])
 
 func _open():
 	$Animation.play("open")
@@ -27,7 +34,6 @@ func _close():
 	$Animation.play_backwards("open")
 
 func _create_action_list():
-	InputMap.load_from_project_settings()
 	for item in action_list.get_children():
 		item.queue_free()
 	
@@ -64,6 +70,7 @@ func _input(event):
 			
 			InputMap.action_erase_events(action_to_remap)
 			InputMap.action_add_event(action_to_remap, event)
+			SettingsManager.save_keybinding(action_to_remap, event)
 			_update_action_list(remapping_button, event)
 			
 			is_remapping = false
@@ -90,4 +97,9 @@ func _on_back_pressed() -> void:
 
 
 func _on_reset_pressed() -> void:
+	InputMap.load_from_project_settings()
+	for action in input_actions:
+		var events = InputMap.action_get_events(action)
+		if events.size() > 0:
+			SettingsManager.save_keybinding(action, events[0])
 	_create_action_list()

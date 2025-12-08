@@ -11,6 +11,7 @@ var keybinds_settings = preload("res://scenes/Menus/keybinds.tscn")
 func _on_language_item_selected(index):
 	var selected_lang = language_button.get_item_text(index)
 	LanguageManager.set_language(selected_lang)
+
 func _ready() -> void:
 	update_ui_from_settings()
 	# Встановлюємо OptionButton на поточну мову
@@ -19,6 +20,7 @@ func _ready() -> void:
 		if language_button.get_item_text(i) == current_lang:
 			language_button.select(i)
 			break
+
 func update_ui_from_settings() -> void:
 	var s = SettingsManager.settings
 

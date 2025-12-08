@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 			jumps_left = max_jumps
 			is_double_jumping = false
 		# Handle jump.
-		if Input.is_action_just_pressed("toggle invisible"):
+		if Input.is_action_just_pressed("toggle_invisible"):
 			toggle_invis()
 
 		if Input.is_action_just_pressed("jump") and jumps_left > 0:

@@ -88,3 +88,7 @@ func _on_mute_toggled(toggled_on: bool) -> void:
 
 func _process(_delta: float):
 	esc()
+
+
+func _on_keybinds_pressed() -> void:
+	settings_menu.add_child(preload("res://scenes/Menus/keybinds.tscn").instantiate())
