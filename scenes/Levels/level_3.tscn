@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://kttwgno75c6q"]
+[gd_scene load_steps=27 format=4 uid="uid://kttwgno75c6q"]
 
 [ext_resource type="Texture2D" uid="uid://b327kyciduk8d" path="res://assets/1 Tiles/BackTileset.png" id="1_d88ds"]
 [ext_resource type="Script" uid="uid://3q2qeqy56e71" path="res://scripts/Levels/level_3.gd" id="1_ld14n"]
@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_r4pos"]
 [ext_resource type="PackedScene" uid="uid://dhypf6ihnekfo" path="res://scenes/Sprites/slime.tscn" id="6_euhem"]
 [ext_resource type="PackedScene" uid="uid://croejyblabof3" path="res://scenes/Others/Killzone.tscn" id="7_wqrpq"]
-[ext_resource type="Script" uid="uid://cv75eminlc15t" path="res://scripts/tilemapbreakable.gd" id="8_r15cd"]
+[ext_resource type="Script" path="res://scripts/tilemapbreakable.gd" id="8_r15cd"]
 [ext_resource type="PackedScene" uid="uid://dljudh4ddwtem" path="res://scenes/Sprites/card.tscn" id="9_pvfsd"]
 [ext_resource type="PackedScene" uid="uid://boxasfqrb055a" path="res://scenes/Sprites/purple_portal.tscn" id="10_euhem"]
 [ext_resource type="Script" uid="uid://cbohobn1kfy1y" path="res://scripts/level_changer.gd" id="11_idx6k"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d1vv8utxt3l6y" path="res://scenes/Menus/pause.tscn" id="17_46g8q"]
 [ext_resource type="Texture2D" uid="uid://6gqw4bf8oj6o" path="res://assets/2 Background/Day/4.png" id="17_pqvqn"]
 [ext_resource type="Texture2D" uid="uid://h71wwm8cl71l" path="res://assets/2 Background/Day/5.png" id="18_2q2jy"]
+[ext_resource type="FontFile" uid="uid://dp4ula2x5n8jf" path="res://assets/Font/Unown.ttf" id="19_lt4p7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ld14n"]
 texture = ExtResource("2_wqrpq")
@@ -203,11 +204,10 @@ script = ExtResource("4_pvfsd")
 position = Vector2(1164, 30)
 
 [node name="Killzone" parent="." instance=ExtResource("7_wqrpq")]
-position = Vector2(1457, 593)
+position = Vector2(1457, 1000)
 scale = Vector2(26.68872, -1.7906965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(30.039589, 10.7890625)
 scale = Vector2(1.044963, 1)
 shape = SubResource("RectangleShape2D_r15cd")
 
@@ -328,6 +328,7 @@ offset_right = -1.0
 offset_bottom = 130.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("5_r4pos")
+theme_override_font_sizes/font_size = 32
 text = "You got 0 parts of broken ship"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -367,6 +368,17 @@ offset_right = 932.0
 offset_bottom = -9.0
 theme_override_fonts/font = ExtResource("5_r4pos")
 text = "Go,and find out"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="."]
+z_index = 1
+offset_left = 152.0
+offset_top = -132.0
+offset_right = 528.70496
+offset_bottom = -83.785
+theme_override_fonts/font = ExtResource("19_lt4p7")
+theme_override_font_sizes/font_size = 32
+text = "Portal is on another side"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="PurplePortal/LevelChanger" to="PurplePortal/LevelChanger" method="_on_body_entered"]

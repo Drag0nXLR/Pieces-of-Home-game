@@ -6,13 +6,15 @@ extends Control
 @onready var settings_btn: Button = $PanelContainer/VBoxContainer/Settings
 @onready var quit_btn: Button = $PanelContainer/VBoxContainer/Quit
 @onready var color_rect: ColorRect = $ColorRect
+@onready var settings_menu: Control = $PauseSettings
 
-@onready var volume_slider: HSlider = $PauseSettings/VBoxContainer/Volume
-@onready var mute: CheckBox = $PauseSettings/VBoxContainer/Mute
+@onready var volume_slider: HSlider = $PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Volume
+@onready var mute: CheckBox = $PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Mute
 
 func _ready() -> void:
 	load_ui_from_settings()
 	LanguageManager._update_current_scene_labels()
+
 func load_ui_from_settings():
 	var s = SettingsManager.settings
 	
@@ -26,13 +28,20 @@ func resume():
 	resume_btn.release_focus()
 	quit_btn.release_focus()
 	settings_btn.release_focus()
+	
 	color_rect.hide()
+	resume_btn.hide()
+	quit_btn.hide()
+	settings_btn.hide()
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("pause")
 
 func pause():
 	get_tree().paused = true
 	color_rect.show()
+	resume_btn.show()
+	quit_btn.show()
+	settings_btn.show()
 	$AnimationPlayer.play("pause")
 
 func esc():
@@ -56,6 +65,9 @@ func _on_quit_pressed() -> void:
 	quit_btn.release_focus()
 	settings_btn.release_focus()
 	color_rect.hide()
+	resume_btn.hide()
+	quit_btn.hide()
+	settings_btn.hide()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")
 
@@ -76,3 +88,7 @@ func _on_mute_toggled(toggled_on: bool) -> void:
 
 func _process(_delta: float):
 	esc()
+
+
+func _on_keybinds_pressed() -> void:
+	settings_menu.add_child(preload("res://scenes/Menus/keybinds.tscn").instantiate())

@@ -1,11 +1,11 @@
 extends Node2D
 
+@onready var score_label: Label = $CanvasLayer/Score_label
+var params: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVars.score = 10
+	score_label.text = LanguageManager.language_dict["You got ... of 20 parts of broken ship"][LanguageManager.current_language].replace("...",str(GlobalVars.score))
 	LanguageManager._update_current_scene_labels()
 	GlobalVars.spawnpoint=Vector2(344,0)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

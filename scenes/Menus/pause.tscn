@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1vv8utxt3l6y"]
+[gd_scene load_steps=10 format=3 uid="uid://d1vv8utxt3l6y"]
 
 [ext_resource type="Script" uid="uid://dy7hccovtf4ky" path="res://scripts/pause.gd" id="1_f1d2v"]
 [ext_resource type="Shader" uid="uid://dh3iq8o3mrb1g" path="res://shaders/pause.gdshader" id="2_eofac"]
+[ext_resource type="PackedScene" uid="uid://de8gtouyn6lkj" path="res://scenes/Menus/keybinds.tscn" id="3_6aya1"]
 [ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_45yld"]
+[ext_resource type="FontFile" uid="uid://skbr44u113j7" path="res://assets/Font/Tiny5-Regular.ttf" id="5_baxym"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_45yld"]
 shader = ExtResource("2_eofac")
@@ -170,14 +172,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Resume"
 
 [node name="Settings" type="Button" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Settings"
 
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Main Menu"
 
@@ -186,12 +191,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_baxym")
 }
 
-[node name="PauseSettings" type="Control" parent="."]
+[node name="Keybinds" parent="." instance=ExtResource("3_6aya1")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+scale = Vector2(1e-05, 1e-05)
+
+[node name="PauseSettings" type="Control" parent="."]
+visible = false
+z_index = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -209,7 +222,16 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PauseSettings/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PauseSettings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseSettings/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_45yld")
 theme_override_font_sizes/font_size = 64
@@ -217,17 +239,47 @@ text = "==VOLUME=="
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Volume" type="HSlider" parent="PauseSettings/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Volume" type="HSlider" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Mute" type="CheckBox" parent="PauseSettings/VBoxContainer"]
+[node name="Mute" type="CheckBox" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_45yld")
 theme_override_font_sizes/font_size = 16
 text = "Mute"
+
+[node name="MarginContainer3" type="MarginContainer" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Label2" type="Label" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_45yld")
+theme_override_font_sizes/font_size = 64
+text = "==KEYBINDS=="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Keybinds" type="Button" parent="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_baxym")
+theme_override_font_sizes/font_size = 40
+text = "CHANGE KEYBINDS"
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseSettings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Back" type="Button" parent="PauseSettings/VBoxContainer"]
 layout_mode = 2
@@ -236,6 +288,7 @@ text = "Back"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="value_changed" from="PauseSettings/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
-[connection signal="toggled" from="PauseSettings/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="value_changed" from="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="pressed" from="PauseSettings/VBoxContainer/ScrollContainer/VBoxContainer/Keybinds" to="." method="_on_keybinds_pressed"]
 [connection signal="pressed" from="PauseSettings/VBoxContainer/Back" to="." method="_on_back_pressed"]

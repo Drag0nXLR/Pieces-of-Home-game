@@ -2,7 +2,7 @@ extends TileMap
 
 @export var player_path: NodePath
 
-func _process(delta):
+func _process(_delta):
 	if player_path == null:
 		return
 

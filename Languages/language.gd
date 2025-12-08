@@ -2,9 +2,10 @@
 # Додати у Project Settings -> Autoload
 
 extends Node
-var ukrainian_font : Font = preload("res://assets/fonts/NineteenEightySeven-MzMJ.ttf")
+var ukrainian_font : Font = preload("res://assets/Font/Tiny5-Regular.ttf")
 var default_label_font : Font = null
 var default_button_font : Font = null
+var default_cursed_label_font = preload("res://assets/Font/Unown.ttf")
 var current_language = "English"
 var last_scene: Node = null
 var language_dict = {
@@ -164,7 +165,7 @@ func _ready():
 	# просто оновлюємо поточну сцену на старті
 	_update_current_scene_labels()
 
-func _process(delta):
+func _process(_delta):
 	# Автоматично оновлюємо тексти, якщо сцена змінилася
 	var current_scene = get_tree().current_scene
 	if current_scene != last_scene and current_scene != null:

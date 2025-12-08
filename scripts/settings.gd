@@ -1,15 +1,17 @@
 extends Control
 
+@onready var margin_container: MarginContainer = $MarginContainer
 @onready var fullscreen_toggle: CheckBox = $MarginContainer/VBoxContainer/FullscreenMode
 @onready var volume_slider: HSlider = $MarginContainer/VBoxContainer/Volume
 @onready var resolution_select: OptionButton = $MarginContainer/VBoxContainer/Resolution
 @onready var mute: CheckBox = $MarginContainer/VBoxContainer/Mute
 @onready var language_button: OptionButton = $MarginContainer/VBoxContainer/Language
-
+var keybinds_settings = preload("res://scenes/Menus/keybinds.tscn")
 
 func _on_language_item_selected(index):
 	var selected_lang = language_button.get_item_text(index)
 	LanguageManager.set_language(selected_lang)
+
 func _ready() -> void:
 	update_ui_from_settings()
 	# Встановлюємо OptionButton на поточну мову
@@ -18,6 +20,7 @@ func _ready() -> void:
 		if language_button.get_item_text(i) == current_lang:
 			language_button.select(i)
 			break
+
 func update_ui_from_settings() -> void:
 	var s = SettingsManager.settings
 
@@ -81,3 +84,7 @@ func _on_fullscreen_mode_toggled(toggled_on: bool) -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	SettingsManager.save_settings()
+
+
+func _on_keybinds_btn_pressed() -> void:
+	margin_container.add_child(keybinds_settings.instantiate())
