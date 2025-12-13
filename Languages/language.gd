@@ -154,10 +154,30 @@ Or do.",
 		"Deutsch":"==LAUTSTÄRKE=="
 	},
 	"You got ... of 20 parts of broken ship": {
-	"English":"You got ... of 20 parts of broken ship",
-	"Українська":"Ти отримав ... з 20 частин зламаного корабля",
-	"Deutsch":"Du hast ... von 20 Teilen des kaputten Schiffs"
-}
+		"English":"You got ... of 20 parts of broken ship",
+		"Українська":"Ти отримав ... з 20 частин зламаного корабля",
+		"Deutsch":"Du hast ... von 20 Teilen des kaputten Schiffs"
+	},
+	"You can go here only if you get 19 pieces of ship": {
+		"English": "You can go here only if you get 19 pieces of ship",
+		"Українська": "Ти можеш пройти сюди лише якщо отримаєш 19 частин корабля.",
+		"Deutsch": "Du kannst hier nur weitergehen, wenn du 19 Schiffsteile erhältst."
+	},
+	"U know that this looks like limbo from gd?\nOH! Almost forgot... Elevator is upwards": {
+		"English": "U know that this looks like limbo from gd?\nOH! Almost forgot... Elevator is upwards",
+		"Українська": "Ти знаєш, що це виглядає як Лімбо з GD?\nОй! Ледь не забув… Ліфт угорі",
+		"Deutsch": "Weißt du, dass das wie Limbo aus GD aussieht?\nOh! Fast vergessen… Der Aufzug ist oben"
+	},
+	"Portal is on opposite side":{
+		"English": "Portal is on opposite side",
+		"Українська": "Портал знаходиться на протилежному боці",
+		"Deutsch": "Das Portal ist auf der gegenüberliegenden Seite"
+	},
+	"Edit Keybinds":{
+		"English": "Edit Keybinds",
+		"Українська": "Редагувати клавіші",
+		"Deutsch": "Tastenzuweisungen bearbeiten"
+	}
 
 }
 

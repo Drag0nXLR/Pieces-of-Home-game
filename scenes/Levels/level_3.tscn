@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c0rgioblwtwkv" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_r4pos"]
 [ext_resource type="PackedScene" uid="uid://dhypf6ihnekfo" path="res://scenes/Sprites/slime.tscn" id="6_euhem"]
 [ext_resource type="PackedScene" uid="uid://croejyblabof3" path="res://scenes/Others/Killzone.tscn" id="7_wqrpq"]
-[ext_resource type="Script" path="res://scripts/tilemapbreakable.gd" id="8_r15cd"]
+[ext_resource type="Script" uid="uid://cv75eminlc15t" path="res://scripts/tilemapbreakable.gd" id="8_r15cd"]
 [ext_resource type="PackedScene" uid="uid://dljudh4ddwtem" path="res://scenes/Sprites/card.tscn" id="9_pvfsd"]
 [ext_resource type="PackedScene" uid="uid://boxasfqrb055a" path="res://scenes/Sprites/purple_portal.tscn" id="10_euhem"]
 [ext_resource type="Script" uid="uid://cbohobn1kfy1y" path="res://scripts/level_changer.gd" id="11_idx6k"]
@@ -170,6 +170,45 @@ size = Vector2(70, 331)
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_ld14n")
 
+[node name="Labels" type="Node" parent="."]
+
+[node name="Label3" type="Label" parent="Labels"]
+z_index = 1
+offset_left = 316.0
+offset_top = -100.0
+offset_right = 368.0
+offset_bottom = -47.0
+theme_override_font_sizes/font_size = 36
+text = "👈"
+
+[node name="Label" type="Label" parent="Labels"]
+z_index = 1
+offset_left = 25.0
+offset_top = -47.0
+offset_right = 533.0
+offset_bottom = -24.0
+theme_override_fonts/font = ExtResource("5_r4pos")
+text = "Wait!,isnt this just the same world?"
+
+[node name="Label2" type="Label" parent="Labels"]
+z_index = 1
+offset_left = 430.0
+offset_top = -32.0
+offset_right = 932.0
+offset_bottom = -9.0
+theme_override_fonts/font = ExtResource("5_r4pos")
+text = "Go,and find out"
+
+[node name="Label4" type="Label" parent="Labels"]
+z_index = 1
+offset_left = 152.0
+offset_top = -132.0
+offset_right = 528.70496
+offset_bottom = -83.785
+theme_override_fonts/font = ExtResource("19_lt4p7")
+theme_override_font_sizes/font_size = 32
+text = "Portal is on opposite side"
+
 [node name="TileMapLab" type="Node" parent="."]
 
 [node name="Background" type="TileMapLayer" parent="TileMapLab"]
@@ -239,10 +278,6 @@ position = Vector2(-850, 54)
 z_index = 6
 position = Vector2(1854.9999, -24.99997)
 scale = Vector2(1.640625, 1.640625)
-animation = &"idle"
-autoplay = "idle"
-frame = 0
-frame_progress = 0.0
 
 [node name="LevelChanger" type="Area2D" parent="PurplePortal"]
 z_index = 5
@@ -340,45 +375,5 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-
-[node name="Label3" type="Label" parent="."]
-z_index = 1
-offset_left = 316.0
-offset_top = -100.0
-offset_right = 368.0
-offset_bottom = -47.0
-theme_override_font_sizes/font_size = 36
-text = "👈"
-
-[node name="Label" type="Label" parent="."]
-z_index = 1
-offset_left = 25.0
-offset_top = -47.0
-offset_right = 533.0
-offset_bottom = -24.0
-theme_override_fonts/font = ExtResource("5_r4pos")
-text = "Wait!,isnt this just the same world?"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="."]
-z_index = 1
-offset_left = 430.0
-offset_top = -32.0
-offset_right = 932.0
-offset_bottom = -9.0
-theme_override_fonts/font = ExtResource("5_r4pos")
-text = "Go,and find out"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label4" type="Label" parent="."]
-z_index = 1
-offset_left = 152.0
-offset_top = -132.0
-offset_right = 528.70496
-offset_bottom = -83.785
-theme_override_fonts/font = ExtResource("19_lt4p7")
-theme_override_font_sizes/font_size = 32
-text = "Portal is on another side"
-metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="PurplePortal/LevelChanger" to="PurplePortal/LevelChanger" method="_on_body_entered"]

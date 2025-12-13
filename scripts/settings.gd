@@ -9,7 +9,9 @@ extends Control
 var keybinds_settings = preload("res://scenes/Menus/keybinds.tscn")
 
 func _on_language_item_selected(index):
+	SettingsManager.language["id"] = index
 	var selected_lang = language_button.get_item_text(index)
+	SettingsManager.save_language()
 	LanguageManager.set_language(selected_lang)
 
 func _ready() -> void:
@@ -44,6 +46,7 @@ func update_ui_from_settings() -> void:
 			resolution_select.select(2)
 		_:
 			resolution_select.select(2) # за замовчуванням
+	language_button.select(SettingsManager.language["id"])
 
 func _on_volume_value_changed(value: float) -> void:
 	SettingsManager.settings["volume"] = value
