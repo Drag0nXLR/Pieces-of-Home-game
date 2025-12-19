@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/DomineKira.mp3-7faefa1dd098b63223c7d98b4ad86a
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

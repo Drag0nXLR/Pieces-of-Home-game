@@ -1,3 +1,109 @@
-[gd_scene format=3 uid="uid://cpgtckaat8tt5"]
+[gd_scene load_steps=6 format=3 uid="uid://cpgtckaat8tt5"]
+
+[ext_resource type="Script" uid="uid://dvwskd8d0cu3" path="res://scenes/Transitions_and_Cutscenes/credits.gd" id="1_hn5ag"]
+[ext_resource type="FontFile" uid="uid://skbr44u113j7" path="res://assets/Font/Tiny5-Regular.ttf" id="2_xtqow"]
+
+[sub_resource type="Animation" id="Animation_updq1"]
+resource_name = "new_animation"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(414, 728), Vector2(414, -1499)]
+}
+
+[sub_resource type="Animation" id="Animation_hn5ag"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(414, 728)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtqow"]
+_data = {
+&"RESET": SubResource("Animation_hn5ag"),
+&"new_animation": SubResource("Animation_updq1")
+}
 
 [node name="Credits" type="Node2D"]
+script = ExtResource("1_hn5ag")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -226.0
+offset_top = 368.0
+offset_right = 226.0
+offset_bottom = 1949.0002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xtqow")
+theme_override_font_sizes/font_size = 32
+text = "-- PIECES OF HOME --
+
+Creator:
+Drag0nXLR
+
+Developers:
+Drag0nXLR
+sungdflower
+
+Supporters:
+Metrofan
+Rainbow Vampire
+
+-- MUSIC --
+
+Domine Kira:
+Yoshihisa Hirano
+
+Time to Adventure:
+???
+
+L no Theme:
+Yoshihisa Hirano
+
+Kyrie II:
+Yoshihisa Hirano
+
+Hass und Liebe (small part):
+Miss construction
+
+THANK'S FOR PLAYING!!!
+
+Press Esc to go to main menu"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xtqow")
+}
+autoplay = "new_animation"
