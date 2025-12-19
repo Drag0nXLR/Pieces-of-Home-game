@@ -13,6 +13,20 @@ var settings = {
 }
 
 # -----------------------------
+#	МОВА (ID-версія)
+# -----------------------------
+
+var language_map := {
+	0: "English",
+	1: "Українська",
+	2: "Deutsch"
+}
+
+var language = {
+	"id": 0	# 0 = English, 1 = Ukrainian, 2 = German, etc.
+}
+
+# -----------------------------
 #	KEYBINDS
 # -----------------------------
 var keybinds := {
@@ -28,9 +42,13 @@ var keybinds := {
 const SAVE_PATH := "user://settings.cfg"
 
 func _ready():
+	var err := config.load(SAVE_PATH)
+
+	if err != OK:
+		save_settings()	# create file only once
+	
 	load_settings()
 	apply_settings()
-	save_settings()	# Щоб створити файл при першому запуску
 
 
 # =============================
@@ -41,7 +59,11 @@ func save_settings() -> void:
 	for key in settings.keys():
 		config.set_value("graphics", key, settings[key])
 
+	# Зберігаємо мову
+	save_language()
+
 	config.save(SAVE_PATH)
+
 
 func save_keybinding(action: StringName, event: InputEvent):
 	var event_str
@@ -53,6 +75,12 @@ func save_keybinding(action: StringName, event: InputEvent):
 	config.set_value("keybinding", action, event_str)
 	config.save(SAVE_PATH)
 
+
+func save_language():
+	config.set_value("language", "id", language["id"])
+	config.save(SAVE_PATH)
+
+
 # =============================
 #	ЗАВАНТАЖЕННЯ
 # =============================
@@ -62,12 +90,17 @@ func load_settings() -> void:
 	if err == OK:
 		# Графіка
 		for key in settings.keys():
+			# load graphics
 			settings[key] = config.get_value("graphics", key, settings[key])
+
+		# Мова
+		language["id"] = config.get_value("language", "id", language["id"])
 
 		# Кейбінди
 		var loaded = load_keybindings()
 		for key in loaded.keys():
 			keybinds[key] = loaded[key]
+
 
 func load_keybindings():
 	var keybindings = {}
@@ -82,8 +115,10 @@ func load_keybindings():
 		else:
 			input_event = InputEventKey.new()
 			input_event.keycode = OS.find_keycode_from_string(event_str)
+
 		keybindings[key] = input_event
 	return keybindings
+
 
 # =============================
 #	ЗАСТОСУВАННЯ НАЛАШТУВАНЬ
@@ -97,6 +132,9 @@ func apply_settings() -> void:
 
 	AudioServer.set_bus_volume_db(0, linear_to_db(settings["volume"]))
 	AudioServer.set_bus_mute(0, settings["muted"])
+
+	var lang_text = language_map[language["id"]]
+	LanguageManager.set_language(lang_text)
 
 
 # =============================

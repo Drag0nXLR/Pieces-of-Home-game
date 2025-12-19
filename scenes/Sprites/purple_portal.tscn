@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://boxasfqrb055a"]
+[gd_scene load_steps=28 format=3 uid="uid://boxasfqrb055a"]
 
 [ext_resource type="Texture2D" uid="uid://l6lkrwf664ao" path="res://assets/4 Animated objects/Purple Portal Sprite Sheet.png" id="1_07nr1"]
+[ext_resource type="Script" uid="uid://djyqxsuspye56" path="res://scripts/Sprites/purple_portal.gd" id="2_yo0pc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yo0pc"]
 atlas = ExtResource("1_07nr1")
@@ -190,6 +191,6 @@ animations = [{
 
 [node name="PurplePortal" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ngnhk")
-animation = &"open"
-frame = 7
-frame_progress = 1.0
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("2_yo0pc")

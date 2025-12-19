@@ -4,6 +4,7 @@ extends Node2D
 var params: Dictionary
 
 func _ready():
+	GlobalVars.invis = false
 	GlobalVars.score = 0
 	score_label.text = LanguageManager.language_dict["You got ... of 20 parts of broken ship"][LanguageManager.current_language].replace("...",str(GlobalVars.score))
 	LanguageManager._update_current_scene_labels()

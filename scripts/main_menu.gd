@@ -6,6 +6,17 @@ extends Control
 func _ready():
 	$VBoxContainer/Start.grab_focus()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pashalko"):
+		randomize()
+		var pashalko_files = [
+			"res://pashalko.mp3",
+			"res://pashalko2.mp3", 
+			"res://pashalko3.mp3",
+			# Add more file paths as needed
+		]
+		var random_pashalko = pashalko_files[randi() % pashalko_files.size()]
+		Music.change_music(random_pashalko)
 
 func _on_start_pressed() -> void:
 	Functions.load_screen_to_scene(SceneManager.go_to_next_level(), {"Load": "scene"})

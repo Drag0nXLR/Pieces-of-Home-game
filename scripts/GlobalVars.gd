@@ -34,5 +34,6 @@ var tips = [
 	"The music is great. Too bad you only hear it until the first saw.",
 	"Want a secret? Press jump… yeah, you get it.",
 	"Your nerves: 0%. Level: 98%.",
-	"Level beaten? Sounds like a dream."
+	"Level beaten? Sounds like a dream.",
+	"Press SHIFT + K to get an easter egg"
 ]
